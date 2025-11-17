@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Issue Book</h3>
+<form method="post">
+  <div class="mb-3">
+    <label>Book</label>
+    <select name="book_id" class="form-select" required>
+      {% for b in books %}
+      <option value="{{ b.id }}">{{ b.title }} ({{ b.copies }} copies)</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Member</label>
+    <select name="member_id" class="form-select" required>
+      {% for m in members %}
+      <option value="{{ m.id }}">{{ m.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Issue Date</label>
+    <input type="date" name="issue_date" class="form-control" value="{{ '' }}">
+  </div>
+  <div class="mb-3">
+    <label>Due in (days)</label>
+    <input type="number" name="due_days" class="form-control" value="14">
+  </div>
+  <button class="btn btn-primary">Issue</button>
+</form>
+{% endblock %}
