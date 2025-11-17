@@ -1,5 +1,5 @@
 # Deploy library management system on local host
-
+The Library Management System is a simple web-based application designed to help manage books in a library.
 
 ## Architecture 
 * Frontend: HTML + CSS (Bootstrap for layout)
