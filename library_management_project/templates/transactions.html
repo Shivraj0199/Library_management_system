@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Transactions</h3>
+<table class="table">
+  <thead><tr><th>ID</th><th>Book</th><th>Member</th><th>Issue Date</th><th>Due Date</th><th>Return Date</th><th>Status</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for t in transactions %}
+    <tr>
+      <td>{{ t.id }}</td>
+      <td>{{ t.book_title }}</td>
+      <td>{{ t.member_name }}</td>
+      <td>{{ t.issue_date }}</td>
+      <td>{{ t.due_date }}</td>
+      <td>{{ t.return_date or '-' }}</td>
+      <td>{{ t.status }}</td>
+      <td>
+        {% if t.status == 'issued' %}
+        <form method="post" action="{{ url_for('return_book', trans_id=t.id) }}">
+          <button class="btn btn-sm btn-success">Return</button>
+        </form>
+        {% else %}
+          -
+        {% endif %}
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8">No transactions</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
