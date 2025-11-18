@@ -148,5 +148,8 @@ Fire the command inside your project directory
 
 ## Note :
 
-1) Install python software with .exe file to the path ````https://www.python.org/downloads/windows/````
+1) Install python software with .exe file to the path
+
+````https://www.python.org/downloads/windows/````
+
 2) Insatll mysql workbench to coonect python (flask) app
