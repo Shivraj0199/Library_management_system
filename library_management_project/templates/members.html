@@ -4,14 +4,37 @@
   <h3>Members</h3>
   <a class="btn btn-success" href="{{ url_for('add_member') }}">Add Member</a>
 </div>
-<table class="table">
-  <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th></tr></thead>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sr.No</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
   <tbody>
     {% for m in members %}
-    <tr><td>{{ m.id }}</td><td>{{ m.name }}</td><td>{{ m.email or '' }}</td><td>{{ m.phone or '' }}</td></tr>
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ m.name }}</td>
+      <td>{{ m.email or '' }}</td>
+      <td>{{ m.phone or '' }}</td>
+      <td>
+        <form method="post" action="{{ url_for('delete_member', id=m.id) }}" 
+              onsubmit="return confirm('Are you sure you want to delete this member?')" 
+              style="display:inline-block;">
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
     {% else %}
-    <tr><td colspan="4">No members</td></tr>
+    <tr><td colspan="5">No members found</td></tr>
     {% endfor %}
   </tbody>
 </table>
+
 {% endblock %}
