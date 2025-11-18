@@ -137,6 +137,32 @@ def add_member():
         return redirect(url_for('members'))
     return render_template('add_member.html')
 
+    # ---------------- Delete Member ----------------
+@app.route('/members/delete/<int:id>', methods=['POST'])
+def delete_member(id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    # Check if member has issued (not returned) books
+    cursor.execute("SELECT COUNT(*) AS active FROM transactions WHERE member_id=%s AND status='issued'", (id,))
+    active = cursor.fetchone()['active']
+
+    if active > 0:
+        flash("Member cannot be deleted — they have issued books!", "danger")
+        cursor.close()
+        conn.close()
+        return redirect(url_for('members'))
+
+    # Delete member
+    cursor.execute("DELETE FROM members WHERE id=%s", (id,))
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+    flash("Member removed successfully.", "info")
+    return redirect(url_for('members'))
+
+
 # ---------------- Issue / Return ----------------
 @app.route('/issue', methods=['GET','POST'])
 def issue():
