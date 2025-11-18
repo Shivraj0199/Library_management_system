@@ -1,11 +1,69 @@
 {% extends "layout.html" %}
 {% block content %}
-<h3>Add Member</h3>
-<form method="post">
-  <div class="mb-3"><label>Name</label><input class="form-control" name="name" required></div>
-  <div class="mb-3"><label>Email</label><input class="form-control" name="email" type="email"></div>
-  <div class="mb-3"><label>Phone</label><input class="form-control" name="phone"></div>
-  <button class="btn btn-primary">Add</button>
-  <a class="btn btn-secondary" href="{{ url_for('members') }}">Back</a>
-</form>
+
+<style>
+  .form-container {
+    max-width: 650px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .form-title {
+    font-weight: 700;
+    color: #2c2f7b;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 600;
+    color: #444;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .btn-custom {
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+</style>
+
+<div class="form-container mt-4">
+  <h3 class="form-title">👤 Add New Member</h3>
+
+  <form method="post">
+
+    <div class="mb-3">
+      <label>Full Name</label>
+      <input class="form-control" name="name" required placeholder="Enter full name">
+    </div>
+
+    <div class="mb-3">
+      <label>Email Address</label>
+      <input class="form-control" name="email" type="email" placeholder="example@gmail.com">
+    </div>
+
+    <div class="mb-3">
+      <label>Phone Number</label>
+      <input class="form-control" name="phone" placeholder="Enter phone number">
+    </div>
+
+    <button class="btn btn-primary btn-custom" type="submit">➕ Add Member</button>
+    <a class="btn btn-secondary btn-custom ms-2" href="{{ url_for('members') }}">⬅ Back</a>
+
+  </form>
+</div>
+
 {% endblock %}
