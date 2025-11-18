@@ -144,3 +144,9 @@ Fire the command inside your project directory
 
 ``` Running on http://127.0.0.1:5000 ```
 
+---
+
+## Note :
+
+1) Install python software with .exe file
+2) Insatll mysql workbench to coonect python (flask) app
