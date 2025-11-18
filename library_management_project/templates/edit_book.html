@@ -1,28 +1,79 @@
 {% extends "layout.html" %}
 {% block content %}
-<h3>Edit Book</h3>
-<form method="post">
-  <div class="mb-3">
-    <label>Title</label>
-    <input class="form-control" name="title" required value="{{ book.title }}">
-  </div>
-  <div class="mb-3">
-    <label>Author</label>
-    <input class="form-control" name="author" value="{{ book.author }}">
-  </div>
-  <div class="mb-3">
-    <label>Publisher</label>
-    <input class="form-control" name="publisher" value="{{ book.publisher }}">
-  </div>
-  <div class="mb-3">
-    <label>Year</label>
-    <input class="form-control" name="year" type="number" value="{{ book.year }}">
-  </div>
-  <div class="mb-3">
-    <label>Copies</label>
-    <input class="form-control" name="copies" type="number" value="{{ book.copies or 1 }}" min="0">
-  </div>
-  <button class="btn btn-primary" type="submit">Save</button>
-  <a class="btn btn-secondary" href="{{ url_for('books') }}">Back</a>
-</form>
+
+<style>
+  .form-container {
+    max-width: 650px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .form-title {
+    font-weight: 700;
+    color: #2c2f7b;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 600;
+    color: #444;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .btn-custom {
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+</style>
+
+<div class="form-container mt-4">
+  <h3 class="form-title">✏ Edit Book</h3>
+
+  <form method="post">
+
+    <div class="mb-3">
+      <label>Book Title</label>
+      <input class="form-control" name="title" required value="{{ book.title }}" placeholder="Enter book title">
+    </div>
+
+    <div class="mb-3">
+      <label>Author</label>
+      <input class="form-control" name="author" value="{{ book.author }}" placeholder="Enter author name">
+    </div>
+
+    <div class="mb-3">
+      <label>Publisher</label>
+      <input class="form-control" name="publisher" value="{{ book.publisher }}" placeholder="Enter publisher">
+    </div>
+
+    <div class="mb-3">
+      <label>Published Year</label>
+      <input class="form-control" name="year" type="number" value="{{ book.year }}" placeholder="e.g. 2022">
+    </div>
+
+    <div class="mb-3">
+      <label>Number of Copies</label>
+      <input class="form-control" name="copies" type="number" value="{{ book.copies or 1 }}" min="0">
+    </div>
+
+    <button class="btn btn-primary btn-custom" type="submit">💾 Save Changes</button>
+    <a class="btn btn-secondary btn-custom ms-2" href="{{ url_for('books') }}">⬅ Back</a>
+
+  </form>
+</div>
+
 {% endblock %}
