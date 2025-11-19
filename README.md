@@ -140,9 +140,13 @@ Fire the command inside your project directory
 
 ``` python app.py ```
 
+![](https://github.com/Shivraj0199/Library_management_system/blob/main/Img/Screenshot%202025-11-19%20195232.png)
+
 ### Step 12 : Open the browser and paste the local host IP
 
 ``` Running on http://127.0.0.1:5000 ```
+
+![](https://github.com/Shivraj0199/Library_management_system/blob/main/Img/Screenshot%202025-11-19%20200156.png)
 
 ---
 
@@ -153,3 +157,5 @@ Fire the command inside your project directory
  ````https://www.python.org/downloads/windows/````
 
 2) Insatll mysql workbench to coonect python (flask) app
+
+![](https://github.com/Shivraj0199/Library_management_system/blob/main/Img/Screenshot%202025-11-19%20200438.png)
